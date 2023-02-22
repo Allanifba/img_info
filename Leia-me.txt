@@ -1,0 +1,29 @@
+informacao
+
+Siga os passos para rodar o programa no PyCharm (recomendado)
+(1) Crie um novo projeto no PyCharm img_info (recomendado)
+(2) Copie o código do arquivo img_info.py para a janela de execução
+(3) Instale o módulo PySimpleGUI
+	No terminal digite: pip install PySimpleGUI
+(4) Copie a pasta arq_img_info e para o mesmo diretório que o arquivo 
+principal do seu projeto informacao (mesma pasta que o arquivo main.py ou 
+img_info.py caso tenha editado)
+(5) Execute o arquivo: shift+f10
+
+Siga os passos para criar um arquivo .exe (continuando do passo 5)
+(6) No terminal digite: pip install pyinstaller
+(7) Novamente, no terminal: pyinstaller --onefile -w main.py
+ou pyinstaller --onefile -w img_info.py
+(8) O arquivo exe encontra-se na pasta dist
+(9) Copie o arquivo main.exe (ou informacao.exe) para um mesmo diretório 
+contendo a pasta arq_img_info.
+(10) Na pasta arq_img_info conter uma nomedaimagem.png referente a qual se quer 
+associar as informações. Neste caso, pode-se colocar um arquivo de texto 
+nomedaimagem.txt com informações ou criar um durante a execução do programa.
+(12) Digite em um dos campos de entrada Knolan e aperte Selecionar ou Enter. Em
+seguida clique sobre a foto do guerreiro que irá aprecer...
+(13) IMPORTANTE: As imagens, nesta versão, apresentam um tamanho fixo de 182x250
+pixels. Usar imagens de tamanho diferente pode causar distorção da interface.
+Uma dica é copiar a imagem ini.png para um powerpoint e usá-la como forma para 
+as outras imagens salvas. Em caso de tela pequena edite a imagem ini para que as
+10 imagens caibam na tela.
