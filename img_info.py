@@ -36,9 +36,11 @@ import PySimpleGUI as sg
 import os
 
 layout = [
-    [sg.Text('                                                                                ', font='Times 14 bold'),
+    [sg.Text('                                                                                   ', font='Times 14 bold'),
      sg.Button('Selecionar', bind_return_key=True, font='Times 16 bold'),
-     sg.Text('                                                              ', font='Times 14 bold'),
+     sg.Text('                                      ', font='Times 14 bold'),
+     sg.Button('Arquivos', font='Times 16 bold'),
+     sg.Text(' ', font='Times 14 bold'),
      sg.Button('Limpar', bind_return_key=True, font='Times 16 bold')],
     [sg.Input(key='entrada0', do_not_clear=True, size=(18, 1), font='Times 14 bold'),
      sg.Input(key='entrada1', do_not_clear=True, size=(18, 1), font='Times 14 bold'),
@@ -86,6 +88,19 @@ def clear_inputs_and_images():
     for i in range(10):
         window[f'im{i}'].update(image_filename=os.path.join('arq_img_info', 'ini.png'))
 
+def show_files():
+    folder = 'arq_img_info'
+    filenames = os.listdir(folder)
+    files_str = '\n'.join([os.path.splitext(f)[0] for f in filenames if f.endswith('.png')])
+    popup_layout = [
+        [sg.Multiline(files_str, size=(50, 20), font='Arial 12', key='files', disabled=True)],
+        [sg.Button('Fechar', font='Arial 14')]]
+    popup_window = sg.Window('Arquivos na pasta', popup_layout)
+    while True:
+        popup_event, _ = popup_window.read()
+        if popup_event == sg.WIN_CLOSED or popup_event == 'Fechar':
+            break
+    popup_window.close()
 
 while True:
     event, values = window.read()
@@ -105,6 +120,9 @@ while True:
                     imagem.Update(image_filename=filename, visible=True)
                 else:
                     sg.Popup(f'O arquivo {filename} não foi encontrado na pasta.')
+
+    if event == 'Arquivos':
+        show_files()
 
     if event in ('im0', 'im1', 'im2', 'im3', 'im4', 'im5', 'im6', 'im7', 'im8', 'im9'):
         button_num = int(event[-1]) - 1
